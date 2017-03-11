@@ -39,8 +39,8 @@ namespace ConsoleApplication1
         public void objectsType()
         {
             Console.WriteLine("\nТип объекта 1: " + typeof(T) +
-                "\nТип объекта 2: " + typeof(V) +
-                "\nТип объекта 3: " + typeof(E));
+                              "\nТип объекта 2: " + typeof(V) +
+                              "\nТип объекта 3: " + typeof(E));
         }
     }
 
