@@ -10,15 +10,20 @@ namespace Generalized_methods
     {
         static void Main(string[] args)
         {
-            Method(5, 10);
-            Method("afsgsg", "fshfd");
+            SomeClass SC = new SomeClass();
+
+            SC.Method<int>();
+            SC.Method<string>();
         }
 
-        static T Method<T>(T x, T y)
+class SomeClass
         {
-            Console.WriteLine("Первый параметр x = {0}, второй параметр y = {1}", x,y);
-            Console.ReadLine();
-            return x;
+            public void Method<T>()
+            {
+                Console.WriteLine(typeof(T).Name);
+                Console.ReadLine();
+                return;
+            }
         }
     }
 }
