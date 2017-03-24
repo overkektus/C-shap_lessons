@@ -10,39 +10,52 @@ namespace Generic_classes_and_interfaces
     {
         static void Main(string[] args)
         {
+            SomeClass<int> SC1 = new SomeClass<int>();
+            SC1.ShowData();
 
+            SomeClass<string> SC2 = new SomeClass<string>();
+            SC2.ShowData();
+
+            SomeClass<int> SC11 = new SomeClass<int>(10, 20);
+            SC11.ShowData();
+
+            SomeClass<string> SC22 = new SomeClass<string>("Hello", "!!!");
+            SC22.ShowData();
         }
     }
 }
 
-class SomeClass : IsomeInterface<string>
+class SomeClass<T>
 {
-    public string SomeMethod(string input1, string input2)
+    T first;
+    public T First
     {
-        return input1 + " " + input2;
-    }
-    public void ShowData(string input)
-     {
-        Console.WriteLine(input.ToUpper());
-     }
-}
-
-public interface IsomeInterface<T>
-{
-    T SomeMethod(T input1, T input2);
-    void ShowData(T input);
-}
-
-
-class SomeAnyClass : IsomeInterface<int>
-{
-    public int SomeMethod(int input1, int input2)
-    {
-        return input1 + input2 - 3;
+        get { return first; }
+        set { first = value; }
     }
 
-    public void ShowData(int input)
+    T second;
+    public T Second
     {
-        Console.WriteLine(input.ToString());
+        get { return second; }
+        set { second = value; }
+    }
+
+    public SomeClass(T input1, T input2)
+    {
+        first = input1;
+        second = input2;
+    }
+
+    public SomeClass()
+    {
+        first = default(T);
+        second = default(T);
+    }
+
+    public void ShowData()
+    {
+        Console.WriteLine("First = {0}, Second = {1}", First, Second);
+        Console.ReadKey();
     }
 }
