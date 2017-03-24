@@ -10,52 +10,45 @@ namespace Generic_classes_and_interfaces
     {
         static void Main(string[] args)
         {
-            SomeClass<int> SC1 = new SomeClass<int>();
-            SC1.ShowData();
-
-            SomeClass<string> SC2 = new SomeClass<string>();
-            SC2.ShowData();
-
-            SomeClass<int> SC11 = new SomeClass<int>(10, 20);
-            SC11.ShowData();
-
-            SomeClass<string> SC22 = new SomeClass<string>("Hello", "!!!");
-            SC22.ShowData();
+            Work<SomeClass1> w = new Work<SomeClass1>(new SomeClass1("Имя для класса1"));
+            w.ShowData();
         }
     }
 }
 
-class SomeClass<T>
+class BaseClass
 {
-    T first;
-    public T First
-    {
-        get { return first; }
-        set { first = value; }
-    }
+    public string name;
+}
 
-    T second;
-    public T Second
+class SomeClass1 : BaseClass
+{
+    public SomeClass1(string input)
     {
-        get { return second; }
-        set { second = value; }
+        name = input;
     }
+}
 
-    public SomeClass(T input1, T input2)
-    {
-        first = input1;
-        second = input2;
-    }
+class Work<T> where T: BaseClass
+{
+    public T someField;
 
-    public SomeClass()
+    public Work(T input)
     {
-        first = default(T);
-        second = default(T);
+        someField = input;
     }
 
     public void ShowData()
     {
-        Console.WriteLine("First = {0}, Second = {1}", First, Second);
+        Console.WriteLine(someField.name);
         Console.ReadKey();
+    }
+}
+
+class SomeClass2 : BaseClass
+{
+    public SomeClass2(string input)
+    {
+        name = input;
     }
 }
