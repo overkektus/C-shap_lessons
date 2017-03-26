@@ -8,6 +8,7 @@ namespace Delegate
 {
     delegate string Del(int x, bool y);
     delegate void DelStat(ref int x);
+    delegate BaseClass Deleg(string name);
     class Program
     {
         static void Main(string[] args)
@@ -26,6 +27,15 @@ namespace Delegate
             delStat(ref p);
             Console.WriteLine(p);
             Console.ReadKey();
+
+            Deleg deleg = new Deleg(Method);
+            BaseClass BC = deleg("First name");
+            Console.WriteLine(BC.name);
+            Console.ReadKey();
+        }
+        static Some Method(string name)
+        {
+            return new Some(name);
         }
     }
 }
@@ -40,5 +50,23 @@ class SomeClass
     public static void MethodStat(ref int x)
     {
         x *= x;
+    }
+}
+
+class BaseClass
+{
+    public string name;
+    public BaseClass(string name)
+    {
+        this.name = name;
+    }
+    public BaseClass() { }
+}
+
+class Some: BaseClass
+{
+    public Some(string name)
+    {
+        this.name = name;
     }
 }
