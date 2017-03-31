@@ -11,26 +11,55 @@ namespace events
     {
         static void Main(string[] args)
         {
-            Mouse mouse = new Mouse();
-            // подписка на событие с указанием конкретного метода
-            mouse.Click += new PushPrinterButton(mouse.OnMouseClick);
-            //.......................
-            mouse.DoEvent(); // вызывается событие
+            PrintButton printButton = new PrintButton();
+            printButton.Click += new PushPrinterButton(StartPrint.OnPrintClick);
+            Console.WriteLine("Наберите текст:");
+
+            Console.CancelKeyPress += Console_CancelKeyPress;
+
+            while (true)
+            {
+                string temp = Console.ReadLine();
+                if (temp != "")
+                {
+                    StartPrint.text += temp + "\n";
+                    continue;
+                }
+                break;
+            }
+            while (true)
+            {
+                if(Console.ReadLine() == "p")
+                {
+                    printButton.DoEvent();
+                    break;
+                }
+            }
+        }
+
+        private static void Console_CancelKeyPress(object sender, ConsoleCancelEventArgs e)
+        {
+           Console.WriteLine("\a\a\a\a\a");
         }
     }
 
-    class Mouse
+    class StartPrint
     {
-        public event PushPrinterButton Click; // объявление события о нажатии кнопки мыши
-        public void DoEvent() // генерация события
+        public static string text;
+        public static void OnPrintClick()
+        {
+            Console.WriteLine("\n\nПолучите текст:\n" + new string('-', 10) + "\n" + text);
+        }
+    }
+
+    class PrintButton
+    {
+        public event PushPrinterButton Click;
+
+        public void DoEvent()
         {
             if (Click != null)
-                Click(); // запуск события
-        }
-        public void OnMouseClick()
-        {
-            Console.WriteLine("Произошло нажатие кнопки мыши по кнопке печати.\n");
-            Console.ReadLine();
+                Click();
         }
     }
 }
