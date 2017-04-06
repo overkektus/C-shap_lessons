@@ -15,6 +15,7 @@ namespace winform
         public Form1()
         {
             InitializeComponent();
+            this.Load += LoadEvent;
             Text = "Hello World!";
             this.BackColor = Color.Aquamarine;
             this.Width = 250;
@@ -47,6 +48,21 @@ namespace winform
 
             Form2 newForm = new Form2(this);
             newForm.Show();
+        }
+
+        private void button2_MouseHover(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Violet;
+        }
+
+        private void button2_MouseLeave(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Azure;
+        }
+
+        private void LoadEvent(object sender, EventArgs e)
+        {
+            this.BackColor = Color.Yellow;
         }
     }
 }
