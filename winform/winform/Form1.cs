@@ -39,5 +39,14 @@ namespace winform
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form1 newForm1 = new Form1();
+            newForm1.Show();
+
+            Form2 newForm = new Form2(this);
+            newForm.Show();
+        }
     }
 }
