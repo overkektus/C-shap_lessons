@@ -15,11 +15,29 @@ namespace winform
         public Form1()
         {
             InitializeComponent();
+            Text = "Hello World!";
+            this.BackColor = Color.Aquamarine;
+            this.Width = 250;
+            this.Height = 250;
+            //this.Size = new Size(200, 150);
+            this.StartPosition = FormStartPosition.CenterParent;
+            this.BackColor = Color.Azure;
+            this.ForeColor = Color.Red;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Hi");
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
