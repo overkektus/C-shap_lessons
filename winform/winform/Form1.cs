@@ -33,7 +33,13 @@ namespace winform
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            Button helloButton = new Button();
+            helloButton.BackColor = Color.LightGray;
+            helloButton.ForeColor = Color.DarkGray;
+            helloButton.Location = new Point(10, 10);
+            helloButton.Text = "Привет";
+            this.Controls.Add(helloButton);
+            //this.Controls.Remove(helloButton);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -64,5 +70,7 @@ namespace winform
         {
             this.BackColor = Color.Yellow;
         }
+
+
     }
 }
